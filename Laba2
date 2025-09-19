@@ -1,0 +1,152 @@
+import pandas as pd
+import random
+import re
+
+
+# table = []
+# for i in range(1, 10):
+#     s = []
+#     for j in range(1, 10):
+#         s.append(i*j)
+#     table.append(s)
+# df = pd.DataFrame(table, index=[1,2,3,4,5,6,7,8,9], columns=[1,2,3,4,5,6,7,8,9])
+# print(df)
+
+# sum = 0
+# for i in range(1, 101, 2):
+#     sum += i
+# print(sum)
+
+# n = int(input("Введите число: "))
+# s = []
+# for i in range(n, n//2-1, -1):
+#     print(i, n//2)
+#     if n % i == 0:
+#         s.append(n//i)
+#         s.append(i)
+# print(f"Делители числа {n}: {sorted(s)}")
+
+# n = int(input("Введите число: "))
+# s = n
+# for i in range(n-1, 0, -1):
+#     s *= i
+# print(f"Факториал числа {n}: {s}")
+
+# n = int(input("Введите число: (длина последовательности) "))
+# a = ['0', '1']
+# while len(a) != n:
+#     a.append(str(int(a[-1]) + int(a[-2])))
+# print(f"Последовательность Фибоначчи: {' '.join(a)}")
+
+numbers = [random.randint(-50, 50) for _ in range(10)]
+
+# n = [str(x) if x % 2 == 0 else '' for x in numbers]
+# print(' '.join([x for x in n if x]))
+
+# print(max(numbers), min(numbers))
+
+# n = input("Напишите пять чисел через пробел: ")
+# a = n.split(" ")
+# print(sorted(' '.join(a)))
+
+# numbers_new = []
+# for i in numbers:
+#     if numbers.count(i) == 1:
+#         numbers_new.append(i)
+# print(numbers_new)
+
+# print(numbers)
+# numbers[0], numbers[-1] = numbers[-1], numbers[0]
+# print(numbers)
+
+# a = dict([("Олег", 5), ("Сергей", 4), ("Вадим", 2)])
+# sum = 0
+# for i in a:
+#     sum += a[i]
+# print(sum/len(a)) 
+
+# n = input("Введите строку: ")
+# s = dict()
+# for i in n:
+#     if i in n: pass
+#     s[i] = n.count(i)
+# print(s)
+
+# s = dict()
+# for i in range(1, 11):
+#     s[i] = i**2
+# print(s)
+
+# keys = ['a', 'b', 'c']
+# values = [1, 10, 100.1]
+# s = dict()
+# for i in range(len(keys)):
+#     s[keys[i]] = values[i]
+# print(s)
+
+# set_1 = {1, 2, 3}
+# set_2 = {2, 3, 4}
+# print(set_1.union(set_2), set_1.intersection(set_2))
+
+# n = input("Введите текст: ")
+# s = set(re.split(',| |-|\n', n))
+# print(s)
+
+# a = [1, 22, 33, 44, 11, 101.1]
+# b = [22, 33.1, 102.1]
+# a_s = set(a)
+# b_s = set(b)
+# print(a_s.intersection(b_s))
+
+# a = set([1, 22, 33, 44, 11, 101.1])
+# b = set([22])
+# if a.intersection(b) == a:
+#     print("a подмножество b")
+# if b.intersection(a) == b:
+#     print("b подмножество a")
+
+# a = {1, 2, 3, 4, 5}
+# b = {x for x in a if x >= 4}
+# print(b)
+
+# numbers_new = [random.randint(-50, 50) for _ in range(20)]
+# print(set(numbers_new))
+
+# a = [1, 22, 33, 44, 11, 101.1, 1]
+# s = dict()
+# for i in a:
+#     s[i] = a.count(i)
+# print(s)
+
+# a = ["lal", "gg", "bb", "boxusr"]
+# print({x for x in a if len(x) > 5})
+
+# n = input("Введите текст: ")
+# s = set(re.split(',| |-|\n', n))
+# d = dict()
+# for i in s:
+#     d[i] = n.count(i)
+# print(d)
+
+# a = [1, 22, 33, 44, 11, 101.1, 1]
+# b = set(a)
+# a_new = list(b)
+# print(a_new)
+
+# a = dict([("Мясо", 5), ("Рыба", 4), ("Рис", 6)])
+# print(max(a, key=lambda x: a[x]))
+
+# a = ["Олег", "Сергей", "Вадим", "Вадим", "Вадим", "Олег"]
+# b = [x for x in a if a.count(x) > 1]
+# c = [a.count(x) for x in b]
+# d = {x for x in b if a.count(x) == max(c)}
+# print(b, d)
+
+# n = input("Введите текст: ")
+# d = dict()
+# for i in range(len(n)):
+#     if n[i] not in d:
+#         d[n[i]] = i
+# print(d)
+
+
