@@ -1,3 +1,6 @@
+import decimal
+
+
 a = [x**2 for x in range(1, 11)]
 print(a)
 
@@ -47,3 +50,20 @@ class Fibonacci:
 
 for i in Fibonacci(5):
     print(i)
+
+getcontext().prec = 10
+
+class IncomeCalc:
+    def __init__(self, start, perc, time):
+        self.deposit = decimal.Decimal(start)
+        self.percent = decimal.Decimal(perc)
+        self.term = decimal.Decimal(time)
+
+    def calc(self):
+        return decimal.Decimal(self.deposit *
+                               ((1+(self.percent/12*100))**(12*self.term)))
+
+
+a = input("Введите начальный вклад, процент (в виде дроби) и срок через пробел: ").split(' ')
+a[1] = a[1].replace("%", "")
+print(IncomeCalc(a[0], f'0.{a[1]}', a[2]).calc)
