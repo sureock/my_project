@@ -11,16 +11,15 @@ print(c)
 
 class Countdown:
     def __init__(self, max_value):
-        self.value = 0
-        self.max = max_value
+        self.value = max_value+1
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self.value >= self.max:
+        if self.value == 1:
             raise StopIteration
-        self.value += 1
+        self.value -= 1
         return self.value
 
 
