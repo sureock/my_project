@@ -25,3 +25,25 @@ class Countdown:
 
 for i in Countdown(5):
     print(i)
+
+
+class Fibonacci:
+    def __init__(self, number):
+        self.value = 0
+        self.fibonacci = [0] * number
+        self.fibonacci[1] = 1
+        for i in range(2, number):
+            self.fibonacci[i] = self.fibonacci[i-1]+self.fibonacci[i-2]
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.value == len(self.fibonacci):
+            raise StopIteration
+        self.value += 1
+        return self.fibonacci[self.value-1]
+
+
+for i in Fibonacci(5):
+    print(i)
