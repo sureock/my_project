@@ -106,10 +106,15 @@ while task != "окончить выполнение":
             ((now_date - my_date).days))
 
     if task == '10':
-        now_date = datetime.date.today()
-        new_line = datetime.datetime.strptime('Сегодня ')
-        print(
-            'Разница в днях %d до моего дня рождения' %
-            ((now_date - my_date).days))
+        now_date = datetime.datetime.now()
+        months = ['января', "февраля",
+                  "марта", "апреля", "мая",
+                  "июня", "июля", "августа",
+                  "сентября", "октября", "ноября",
+                  "декабря"]
+        print(f"Сегодня {now_date.day}"
+              f" {months[int(now_date.month)-1]}"
+              f" {now_date.year} года,"
+              f" время: {datetime.datetime.strftime(now_date, '%H:%M')}")
 
     task = input("Введите номер задания или 'окончить выполнение': ")
