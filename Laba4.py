@@ -48,7 +48,11 @@ class Bike(Transport):
         return f'\nBike {self.brand} is cycling at {self.speed} km/h'
 
 
+transport = Transport('ford', 60)
 car1 = Car('mustang', 70, 6)
 car2 = Car('f-1', 120, 1)
 bike = Bike('T-34', 90, 'mountain')
-print(car1 + car2)
+print(car1 + bike)
+
+for i in [transport, car1, bike]:
+    print(i.move())
