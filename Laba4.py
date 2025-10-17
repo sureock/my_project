@@ -16,11 +16,29 @@ class Car(Transport):
         self.seats = seats
 
     def __str__(self):
-        return super().__str__()+f' Seats: {self.seats}'
+        return (f'Transport: {self.brand}, Speed: {self.speed},'
+                f' Seats: {self.seats}')
 
-    def honk():
-        return 'Beep-Beep!'
+    def honk(self):
+        return '\nBeep-Beep!'
+
+    def move(self):
+        return f'\nCar {self.brand} is driving at {self.speed} km/h'
 
 
-car = Transport('mustang', '70').Car(6)
-print(car, car.move())
+class Bike(Transport):
+    def __init__(self, brand, speed, type):
+        super().__init__(brand, speed)
+        self.type = type
+
+    def __str__(self):
+        return (f'\nTransport: {self.brand}, Speed: {self.speed},'
+                f' Type: {self.type}')
+
+    def move(self):
+        return f'\nBike {self.brand} is cycling at {self.speed} km/h'
+
+
+car = Car('mustang', 70, 6)
+bike = Bike('T-34', 90, 'mountain')
+print(car, bike.move(), bike)
