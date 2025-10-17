@@ -19,6 +19,15 @@ class Car(Transport):
         return (f'Transport: {self.brand}, Speed: {self.speed},'
                 f' Seats: {self.seats}')
 
+    def __len__(self):
+        return self.seats
+
+    def __eq__(self, other):
+        return self.speed == other.speed
+
+    def __add__(self, other):
+        return f'Суммарная скорость машин: {self.speed + other.speed}'
+
     def honk(self):
         return '\nBeep-Beep!'
 
@@ -39,6 +48,7 @@ class Bike(Transport):
         return f'\nBike {self.brand} is cycling at {self.speed} km/h'
 
 
-car = Car('mustang', 70, 6)
+car1 = Car('mustang', 70, 6)
+car2 = Car('f-1', 120, 1)
 bike = Bike('T-34', 90, 'mountain')
-print(car, bike.move(), bike)
+print(car1 + car2)
