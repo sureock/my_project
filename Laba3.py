@@ -100,9 +100,16 @@ while task != "окончить выполнение":
 
     if task == '9':
         my_date = datetime.date(2005, 12, 25)
-        now_date = datetime.datetime.now().date()
-        print(type(now_date), type(my_date))
-        delta = datetime.timedelta(now_date-my_date)
-        print(f'Разница в днях {delta.days}')
+        now_date = datetime.date.today()
+        print(
+            'Разница в днях %d до моего дня рождения' %
+            ((now_date - my_date).days))
+
+    if task == '10':
+        now_date = datetime.date.today()
+        new_line = datetime.datetime.strptime('Сегодня ')
+        print(
+            'Разница в днях %d до моего дня рождения' %
+            ((now_date - my_date).days))
 
     task = input("Введите номер задания или 'окончить выполнение': ")
