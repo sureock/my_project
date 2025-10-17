@@ -58,34 +58,50 @@ while task != "окончить выполнение":
 
         class IncomeCalc:
             def __init__(self, start, perc, time):
-                self.deposit = decimal.Decimal(start)
-                self.percent = decimal.Decimal(perc)
-                self.term = decimal.Decimal(time)
+                self.dep = decimal.Decimal(start)
+                self.per = decimal.Decimal(perc)
+                self.t = decimal.Decimal(time)
                 # self.deposit = int(start)
                 # self.percent = int(perc)
                 # self.term = int(time)
 
             def calc(self):
-                return self.deposit * ((1+(self.percent/(12*100)))**(12*self.term))
+                calced = self.dep * ((1+(self.per/(12*100)))**(12*self.t))
+                return calced
 
-        a = input("Введите начальный вклад, процент (в виде дроби) и срок через пробел: ").split(' ')
+        a = input("Введите начальный вклад, процент (в виде дроби) и "
+                  "срок через пробел: ").split(' ')
         a[1] = a[1].replace("%", "")
         n = f'{IncomeCalc(a[0], a[1], a[2]).calc():f}'
-        print(f' Итоговая сумма вклада: {n}\n Общая прибыль: {int(n)-int(a[0])}')
+        print(f'Итоговая сумма вклада: {n}\n'
+              f'Общая прибыль: {int(n)-int(a[0])}')
 
     if task == '7':
         first = fractions.Fraction('3/4')
         second = fractions.Fraction('5/6')
-        print(f'Сложение: {first+second}, вычитание: {first-second}, умножение: {first*second}, деление: {first/second}')
-    
+        print(f"""
+              Сложение: {first+second},
+              вычитание: {first-second},
+              умножение: {first*second},
+              деление: {first/second}""")
+
     if task == '8':
         all_now = datetime.datetime.now()
-        print(f'Текущее дата и время {datetime.datetime.strftime(all_now, "%Y-%m-%d %H:%M:%S")}, текущая дата {datetime.datetime.strftime(all_now, "%Y-%m-%d")}, текущее время {datetime.datetime.strftime(all_now, "%H:%M:%S")}')
+        print(f"""
+              Текущее дата и время {datetime.datetime.strftime(
+                all_now,
+                "%Y-%m-%d %H:%M:%S")},
+              текущая дата {datetime.datetime.strftime(
+                all_now,
+                "%Y-%m-%d")},
+              текущее время {datetime.datetime.strftime(
+                all_now,
+                "%H:%M:%S")}""")
 
     if task == '9':
         my_date = datetime.date(2005, 12, 25)
-        now_date = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d")
-        print(now_date, my_date)
+        now_date = datetime.datetime.now().date()
+        print(type(now_date), type(my_date))
         delta = datetime.timedelta(now_date-my_date)
         print(f'Разница в днях {delta.days}')
 
