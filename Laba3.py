@@ -6,14 +6,19 @@ task = input("Введите номер задания или 'окончить 
 while task != "окончить выполнение":
     if task == '1':
         a = [x**2 for x in range(1, 11)]
-        print(a)
+
+        print(f'Список квадратов чисел от 1 до 10: {a}')
+
     if task == '2':
         b = [x for x in range(1, 20) if x % 2 == 0]
-        print(b)
+
+        print(f'Список чётных чисел от 1 до 20: {b}')
+
     if task == '3':
         words = ['python', 'Java', 'c++', 'Rust', 'go']
         c = [x.upper() for x in words if len(x) > 3]
-        print(c)
+
+        print(f'Список слов длиннее 3 символов в верхнем регистре: {c}')
 
     if task == '4':
         class Countdown:
@@ -29,6 +34,7 @@ while task != "окончить выполнение":
                 self.value -= 1
                 return self.value
 
+        print("Отчет от 5 до 0  при помощи класс-итератора")
         for i in Countdown(5):
             print(i)
 
@@ -50,6 +56,7 @@ while task != "окончить выполнение":
                 self.value += 1
                 return self.fibonacci[self.value-1]
 
+        print('Первые 5 чисел Фибоначчи')
         for i in Fibonacci(5):
             print(i)
 
