@@ -36,7 +36,7 @@ print(greet('Alex'))
 def require_role(allowed_roles):
     def func_decorator(func):
         def wrapper(name):
-            if name not in allowed_roles:
+            if useri[name] not in allowed_roles:
                 return f'Доступ запрещен пользователю {name}'
             else:
                 return func(name)
@@ -45,9 +45,12 @@ def require_role(allowed_roles):
     return func_decorator
 
 
+useri = {'Alex': 'admin', 'Dima': 'common'}
+
+
 @require_role(["admin"])
 def delete_database(user):
     return f'База данных удалена пользователем {user}'
 
 
-print(delete_database('admin'))
+print(delete_database('Dima'))
