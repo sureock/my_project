@@ -14,10 +14,10 @@ def generate(length, s, d, u, hash):
             all_symbols.append(i)
     if d:
         for i in range(48, 58):
-            all_symbols.append(i)
+            all_symbols.append(str(chr(i)))
     if u:
         for i in range(65, 91):
-            all_symbols.append(i)
+            all_symbols.append(chr(i))
     for i in range(length):
         result.append(random.choice(all_symbols))
     finall_result = ''.join(result)
