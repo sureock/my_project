@@ -1,7 +1,9 @@
 import random
 
 
-def generate(length, s, d, u):
+def generate(length, s, d, u, hash):
+    if hash is None:
+        hash = "sha256"
     all_symbols = []
     result = []
     for i in range(97, 123):
@@ -18,4 +20,5 @@ def generate(length, s, d, u):
             all_symbols.append(i)
     for i in range(length):
         result.append(random.choice(all_symbols))
-    return result
+    finall_result = ''.join(result)
+    return (finall_result, hash)

@@ -31,4 +31,4 @@ def pass_parser():
         help="Тип хэширования, базовое значение = sha256"
     )
     args = parser.parse_args()
-    return [args.l, args.special, args.digits, args.upper, args.hasher]
+    return args.l, args.special, args.digits, args.upper, args.hasher
