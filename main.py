@@ -8,3 +8,4 @@ generated = generator.generate(args[0],
                                args[4]
                                )
 print(f'Пароль: {generated[0]}, тип хэширования: {generated[1]}')
+print(storage.hashing_saving(generated[0], generated[1]))
