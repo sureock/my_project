@@ -29,7 +29,7 @@ while task != "окончить выполнение":
                 return self
 
             def __next__(self):
-                if self.value == 1:
+                if self.value == 0:
                     raise StopIteration
                 self.value -= 1
                 return self.value
@@ -125,3 +125,5 @@ while task != "окончить выполнение":
               f" время: {datetime.datetime.strftime(now_date, '%H:%M')}")
 
     task = input("Введите номер задания или 'окончить выполнение': ")
+
+print("Здраствуйте")
