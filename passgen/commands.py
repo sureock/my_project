@@ -26,7 +26,7 @@ def pass_parser():
         help="Добавляет прописные буквы в пароль"
     )
     parser.add_argument(
-        "--hasher", "-h",
+        "--hasher", "-hash",
         type=str, choices=["sha256", "md5", "blake2b"],
         help="Тип хэширования, базовое значение = sha256"
     )
