@@ -79,9 +79,9 @@ while task != "окончить выполнение":
         a = input("Введите начальный вклад, процент (в виде дроби) и "
                   "срок через пробел: ").split(' ')
         a[1] = a[1].replace("%", "")
-        n = f'{IncomeCalc(a[0], a[1], a[2]).calc():f}'
+        n = f'{IncomeCalc(str(a[0]), a[1], a[2]).calc():f}'
         print(f'Итоговая сумма вклада: {n}\n'
-              f'Общая прибыль: {int(n)-int(a[0])}')
+              f'Общая прибыль: {round(float(n), 2)-round(float(a[0]), 2)}')
 
     if task == '7':
         first = fractions.Fraction('3/4')
@@ -108,9 +108,14 @@ while task != "окончить выполнение":
     if task == '9':
         my_date = datetime.date(2005, 12, 25)
         now_date = datetime.date.today()
+        next_day = datetime.date(datetime.date.today().year, 12, 25)
         print(
             'Разница в днях %d до моего дня рождения' %
             ((now_date - my_date).days))
+        print(
+            'До следующего дня рождения %d дней' %
+            ((next_day - now_date).days)
+        )
 
     if task == '10':
         now_date = datetime.datetime.now()
