@@ -6,29 +6,29 @@ def pass_parser():
         description="Программа для генерации безопасного пароля"
         )
     parser.add_argument(
-        "L",
+        "l",
         type=int,
         help="Длина пароля, базовое значение = 12"
         )
     parser.add_argument(
-        "--special", "-s",
+        "-s", "--special",
         action="store_true",
         help="Добавляет специальные символы"
     )
     parser.add_argument(
-        "--digits", "-d",
+        "-d", "--digits",
         action="store_true",
         help='Добавляет цифры в пароль'
     )
     parser.add_argument(
-        "--upper", "-u",
+        "-u", "--upper",
         action="store_true",
         help="Добавляет прописные буквы в пароль"
     )
     parser.add_argument(
-        "--hasher", "-hash",
+        "-hash", "--hasher",
         type=str, choices=["sha256", "md5", "blake2b"],
         help="Тип хэширования, базовое значение = sha256"
     )
     args = parser.parse_args()
-    return args
+    return [args.l, args.special, args.digits, args.upper, args.hasher]
