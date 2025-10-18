@@ -54,5 +54,5 @@ car2 = Car('f-1', 120, 1)
 bike = Bike('T-34', 90, 'mountain')
 print(car1 + bike)
 
-for i in [transport, car1, bike]:
+for i in [transport, car1, car2, bike]:
     print(i.move())
