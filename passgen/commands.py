@@ -8,7 +8,7 @@ def pass_parser():
     parser.add_argument(
         "l",
         type=int,
-        help="Длина пароля, базовое значение = 12"
+        help="Длина пароля, рекомендуется = 12"
         )
     parser.add_argument(
         "-s", "--special",
