@@ -1,7 +1,7 @@
 import argparse
 
 
-def pass_parser():
+def get_args():
     parser = argparse.ArgumentParser(
         description="Программа для генерации безопасного пароля"
         )
@@ -30,5 +30,12 @@ def pass_parser():
         type=str, choices=["sha256", "md5", "blake2b"],
         help="Тип хэширования, базовое значение = sha256"
     )
+    parser.add_argument(
+        "-p", "--path",
+        type=str,
+        action='store',
+        help="Путь сохранения пароля"
+    )
     args = parser.parse_args()
-    return args.l, args.special, args.digits, args.upper, args.hasher
+    return (args.l, args.special, args.digits,
+            args.upper, args.hasher, args.path)

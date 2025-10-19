@@ -1,7 +1,7 @@
 import random
 
 
-def generate(length, s, d, u, hash):
+def get_generated_password(length, s, d, u, hash):
     if hash is None:
         hash = "sha256"
     all_symbols = []
@@ -9,7 +9,10 @@ def generate(length, s, d, u, hash):
     for i in range(97, 123):
         all_symbols.append(chr(i))
     if s:
-        symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '—', '_', '+', '=', ';', ':', ',', './', '?', '\\', '|', '`', '~', '[', ']', '{', '}']
+        symbols = ['!', '@', '#', '$', '%', '^', '&',
+                   '*', '(', ')', '—', '_', '+', '=',
+                   ';', ':', ',', './', '?', '\\', '|',
+                   '`', '~', '[', ']', '{', '}']
         for i in symbols:
             all_symbols.append(i)
     if d:
