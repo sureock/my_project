@@ -1,6 +1,5 @@
 __all__ = ['commands',
            'generator',
-           'storage',
-           'resources']
+           'storage']
 
 print('Пакет passgen загружен')
