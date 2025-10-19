@@ -1,0 +1,2 @@
+argparse>=1.4.0
+hashlib>=1.0.0
