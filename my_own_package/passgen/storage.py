@@ -1,7 +1,8 @@
 import hashlib
 
 
-def save_hash_in_file(password, type='sha256', path='password.txt'):
+def save_hash_in_file(password: str, type: str = 'sha256',
+                      path: str = 'password.txt'):
     if type == "sha256":
         hashed = hashlib.sha256(password.encode()).hexdigest()
     if type == "md5":

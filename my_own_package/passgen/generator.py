@@ -1,7 +1,7 @@
 import random
 
 
-def get_generated_password(length, s, d, u, hash):
+def get_generated_password(length: int, s: bool, d: bool, u: bool, hash: str):
     if hash is None:
         hash = "sha256"
     all_symbols = []
