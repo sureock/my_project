@@ -34,7 +34,7 @@ def get_args():
         "-p", "--path",
         type=str,
         action='store',
-        help="Путь сохранения пароля"
+        help="Путь сохранения пароля, если нет пути - пароль не сохраняется"
     )
     args = parser.parse_args()
     return (args.l, args.special, args.digits,
