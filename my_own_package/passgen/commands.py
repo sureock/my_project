@@ -1,7 +1,14 @@
+"""Модуль argsparse
+"""
 import argparse
 
 
 def get_args():
+    """Функция получения аргументов из командной строки
+
+    Returns:
+        tuple: длина, спец. символы, цифры, заглавные, метод хэширования, путь
+    """
     parser = argparse.ArgumentParser(
         description="Программа для генерации безопасного пароля"
         )
