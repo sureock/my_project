@@ -1,8 +1,19 @@
+"""Модуль хэширования и сохранения пароля
+"""
 import hashlib
 
 
 def save_hash_in_file(password: str, type: str,
                       path: str):
+    """Хэшировует текст и сохраняет его в файле
+
+    Args:
+        password (str): пароль
+        type (str): тип хэширования
+        path (str): путь сохранения пароля
+    Returns:
+        str: Строка с информированием о сохранении
+    """
     if type == "md5":
         hashed = hashlib.md5(password.encode()).hexdigest()
     if type == "blake2b":
