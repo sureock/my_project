@@ -30,8 +30,9 @@ while limit > 0:
     data.append(poke_dict)
     limit = limit - 1
 
-plt.plot([x['hp'] for x in data])
+plt.plot([x['name'] for x in data], [x['hp'] for x in data])
 plt.xlabel('pokemon hp')
+plt.xticks(rotation=45, size=7)
 plt.show()
 
 plt.scatter([x['attack'] for x in data], [x['name'] for x in data])
@@ -54,7 +55,7 @@ plt.hist([x['speed'] for x in data])
 plt.xlabel('pokemon speed')
 plt.show()
 
-plt.pie([x['defense'] for x in data])
+plt.pie([x['defense'] for x in data], labels=[x['name'] for x in data])
 plt.xlabel('pokemon defense')
 plt.show()
 
