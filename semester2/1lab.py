@@ -18,15 +18,15 @@ while limit > 0:
         id=a-limit+1,
         name=r.json()['results'][a-limit]['name'],
         height=s.json()['height'],
-        weight=s.json()['weight'],
-        speed=s.json()['stats'][0]['base_stat'],
-        defense=s.json()['stats'][3]['base_stat'],
-        attack=s.json()['stats'][4]['base_stat'],
-        hp=s.json()['stats'][5]['base_stat'])
+        weight=s.json()['weight'])
+
+    for i in s.json()['stats']:
+        name = i['stat']['name']
+        if i['stat']['name'] in ['speed', 'defense', 'attack', 'hp']:
+            poke_dict[name] = i['base_stat']
 
     # print(poke_dict)
     # break
-
     data.append(poke_dict)
     limit = limit - 1
 
@@ -61,4 +61,5 @@ plt.show()
 plt.stairs([x['defense'] for x in data])
 plt.xlabel('pokemon defense')
 plt.show()
-# print(data)
+
+print(data)
