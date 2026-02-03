@@ -65,7 +65,8 @@ plt.xlabel('speed')
 plt.show()
 
 plt.pie([x['defense'] for x in data],
-        labels=[(x['name'], x['defense']) for x in data])
+        labels=[(x['name'], x['defense']) for x in data],
+        autopct='%1.1f%%')
 plt.title('pokemon defense pie')
 plt.show()
 
