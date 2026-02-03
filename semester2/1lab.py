@@ -15,7 +15,7 @@ while limit > 0:
     # print(s.json()['height'])
 
     poke_dict = dict(
-        id=a-limit+1,
+        id=s.json()['id'],
         name=r.json()['results'][a-limit]['name'],
         height=s.json()['height'],
         weight=s.json()['weight'])
@@ -31,36 +31,48 @@ while limit > 0:
     limit = limit - 1
 
 plt.plot([x['name'] for x in data], [x['hp'] for x in data])
-plt.xlabel('pokemon hp')
+plt.title('pokemon hp')
+plt.xlabel('names')
+plt.ylabel('hp')
 plt.xticks(rotation=45, size=7)
 plt.show()
 
 plt.scatter([x['attack'] for x in data], [x['name'] for x in data])
-plt.xlabel('pokemon attack/name')
+plt.title('pokemon attack & name')
+plt.ylabel('names')
+plt.xlabel('attack')
 plt.show()
 
-plt.bar([x['weight'] for x in data],
-        [10*int(x['weight']) for x in data],
-        width=10)
-plt.xlabel('pokemon weight')
+plt.bar([x['name'] for x in data],
+        [int(x['weight']) for x in data])
+plt.title('pokemon weight')
+plt.xlabel('names')
+plt.ylabel('weight')
+plt.xticks(rotation=45, size=7)
 plt.show()
 
 plt.barh([x['name'] for x in data],
-         [5*int(x['height']) for x in data],
+         [int(x['height']) for x in data],
          height=0.8)
-plt.xlabel('pokemon name/height')
+plt.title('pokemon name & height')
+plt.xlabel('height')
+plt.ylabel('names')
 plt.show()
 
-plt.hist([x['speed'] for x in data])
-plt.xlabel('pokemon speed')
+plt.hist([x['speed'] for x in data], width=0.1)
+plt.title('pokemon speed')
+plt.xlabel('speed')
 plt.show()
 
-plt.pie([x['defense'] for x in data], labels=[x['name'] for x in data])
-plt.xlabel('pokemon defense')
+plt.pie([x['defense'] for x in data],
+        labels=[(x['name'], x['defense']) for x in data])
+plt.title('pokemon defense pie')
 plt.show()
 
-plt.stairs([x['defense'] for x in data])
-plt.xlabel('pokemon defense')
-plt.show()
+# plt.stairs([x['defense'] for x in data])
+# plt.title('pokemon defense stairs')
+# plt.xlabel('names')
+# plt.ylabel('defense')
+# plt.show()
 
 print(data)
