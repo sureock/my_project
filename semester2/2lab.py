@@ -2,9 +2,9 @@ import re
 
 
 # # 1
-def validate_login(login):
+def validate_login():
     login = input('Введите логин: ')
-    pattern = r'^[a-zA-Z0-9_]{4,19}[a-zA-Z0-9]$'
+    pattern = r'^[a-zA-Z][a-zA-Z0-9_]{3,18}[a-zA-Z0-9]$'
     if re.match(pattern, login) is not None:
         print('Допускается')
     else:
