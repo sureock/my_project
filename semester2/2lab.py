@@ -15,8 +15,7 @@ def validate_login():
 def search_date():
     date = input('Введите строку на поиск даты: ')
     symbols = '/.-'
-    pattern = r'([0-3][0-9]|[0-3]?[0-9])[-./](1[0-2]|0?[1-9])[-./][0-2]?[0-9]?[0-9]?[0-9]?'
-    symbols
+    pattern = r'([0-3][0-9]|[0-3]?[0-9])[-./](1[0-2]|0?[1-9])[-./][0-9]?[0-9]?[0-9]?[0-9]?'
     search = re.search(pattern, date)
     if search is not None:
         for j in symbols:
@@ -38,10 +37,16 @@ def search_date():
 # 3
 def logs_parse():
     logs = input('Введите логи для парсинга: ')
-    pattern = r'(\d+-\d+-\d+) (\d+:\d+:\d+) INFO user=(.+) action=(.+) ip=(\d+.\d+.\d+.\d)'
-    search = re.search(pattern, logs)
-    if search is not None:
-        print("{\n\t'date': '"+search.group(1)+"'\n\t'time': '"+search.group(2)+"'\n\t'user': '"+search.group(3)+"'\n\t'action': '"+search.group(4)+"'\n\t'ip': '"+search.group(5)+"'\n}")
+    pattern = {
+        'date': r'(\d+-\d+-\d+)',
+        'time': r'(\d+:\d+:\d+)',
+        'user': r'user=(.\S+)',
+        'action': r'action=(.\S+)',
+        'ip': r'(\d+\.\d+\.\d+\.\d)',
+        }
+    for key, item in pattern.items():
+        pattern[key] = re.search(item, logs).group(1)
+    return print(pattern)
 
 
 # 4
@@ -65,9 +70,9 @@ def password_check():
 def email_check():
     email = input('Введите email для проверки: ')
     patterns = [
-        r'gmail.com',
-        r'yandex.ru',
-        r'edu.ru',
+        r'[a-zA-Z][a-zA-Z0-9_-.%+-]{,319}@gmail.com',
+        r'[a-zA-Z][a-zA-Z0-9_-.%+-]{,319}@yandex.ru',
+        r'[a-zA-Z][a-zA-Z0-9_-.%+-]{,319}@edu.ru',
         ]
     for i in patterns:
         search = re.search(i, email)
@@ -86,13 +91,13 @@ def number_check():
         result = search.group()
         for i in symbols:
             result = result.replace(i, '')
-        return print(result)
+        return print('+7'+result[1:])
     return print('Не номер')
 
 
 # validate_login()
-search_date()
-# # logs_parse()
+# search_date()
+# logs_parse()
 # password_check()
 # email_check()
-# number_check()
+number_check()
