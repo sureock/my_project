@@ -15,31 +15,24 @@ def validate_login():
 def search_date():
     date = input('Введите строку на поиск даты: ')
     symbols = '/.-'
-    patterns = [
-        r'([0-3][0-9]|[0-3]?[0-9])\.(1[0-2]|0?[1-9])\.[0-2]?[0-9]?[0-9]?[0-9]?',
-        r'([0-3][0-9]|[0-3]?[0-9])\-(1[0-2]|0?[1-9])\-[0-2]?[0-9]?[0-9]?[0-9]?',
-        r'([0-3][0-9]|[0-3]?[0-9])\/(1[0-2]|0?[1-9])\/[0-2]?[0-9]?[0-9]?[0-9]?',
-    ]
+    pattern = r'([0-3][0-9]|[0-3]?[0-9])[-./](1[0-2]|0?[1-9])[-./][0-2]?[0-9]?[0-9]?[0-9]?'
     symbols
-    for i in patterns:
-        search = re.search(i, date)
-        # result = search.group()
-        if search is not None:
-            for j in symbols:
-                if j in search.group():
-                    result = search.group().split(j)
-                    break
-            if int(result[0]) > 28:
-                if (result[0] == '29' and int(result[1]) == 2) and int(result[2]) % 4 != 0:
-                    break
-                if int(result[0]) > 29 and int(result[1]) == 2:
-                    break
-                if int(result[0]) == 31 and str(int(result[1])) not in ['1', '3', '5', '7', '8', '10', '12']:
-                    break
-                if int(result[0]) > 31:
-                    break
-            print(search.group())
-    print('Нет даты.')
+    search = re.search(pattern, date)
+    if search is not None:
+        for j in symbols:
+            if j in search.group():
+                result = search.group().split(j)
+                break
+        if int(result[0]) > 28:
+            if (result[0] == '29' and int(result[1]) == 2) and int(result[2]) % 4 != 0:
+                return print('Нет даты.')
+            if int(result[0]) > 29 and int(result[1]) == 2:
+                return print('Нет даты.')
+            if int(result[0]) == 31 and str(int(result[1])) not in ['1', '3', '5', '7', '8', '10', '12']:
+                return print('Нет даты.')
+            if int(result[0]) > 31:
+                return print('Нет даты.')
+        return print(search.group())
 
 
 # 3
@@ -97,9 +90,9 @@ def number_check():
     return print('Не номер')
 
 
-validate_login()
+# validate_login()
 search_date()
-logs_parse()
-password_check()
-email_check()
-number_check()
+# # logs_parse()
+# password_check()
+# email_check()
+# number_check()
