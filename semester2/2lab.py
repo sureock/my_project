@@ -84,14 +84,10 @@ def email_check():
 # 6
 def number_check():
     number = input('Введите номер телефона для парсинга: ')
-    pattern = r'\+?[0-9]{1}[ -\(\)]*\d{3}[ -\(\)]*\d{3}[ -\(\)]*\d{2}[ -\(\)]*\d{2}'
-    symbols = ' -()'
+    pattern = r'(\+?7|8)[\s\-\(\)]?(\d{3})[\s\-\(\)]?(\d{3})[\s\-\(\)]?(\d{2})[\s\-\(\)]?(\d{2})'
     search = re.search(pattern, number)
     if search is not None:
-        result = search.group()
-        for i in symbols:
-            result = result.replace(i, '')
-        return print('+7'+result[1:])
+        return print('+7'+search.group(2)+search.group(3)+search.group(4)+search.group(5))
     return print('Не номер')
 
 
