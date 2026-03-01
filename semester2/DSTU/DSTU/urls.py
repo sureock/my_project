@@ -18,6 +18,11 @@ from django.urls import path, re_path
 from catalog import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    re_path(r'^info', views.info, name='info')
+    path("", views.index),
+    path("info/<str:name>", views.info),
+    path("404", views.not_found),
+    path("authors/<str:name>", views.authors),
+    re_path(r"^authors", views.authors),
+    path("courses/<str:id>", views.courses),
+    re_path(r"^courses", views.courses),
 ]
