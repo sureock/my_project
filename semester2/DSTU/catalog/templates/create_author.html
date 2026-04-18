@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% block title %}
+    Добавление преподавателя - {{ block.super }}
+{% endblock %}
+<h1>Добавить преподавателя</h1>
+    {% block content %}
+    {% csrf_token %}
+        <form>
+            <table>
+                {{ teacher_form.as_table }}
+                {{ teacherinfo_form.as_table }}
+            </table>
+            <button type="submit">Сохранить</button>
+        </form>
+    {% endblock %}
+</form>

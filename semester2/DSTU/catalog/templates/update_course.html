@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Обновление/удаление курса - {{ block.super }}
+        {% endblock %}
+    </head>
+<body>
+    {% block content %}
+    <h1>Обновить информацию о курсе</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Текущий автор: {{ course.teacher.first_name }} {{ course.teacher.last_name }}
+        </label>
+        <br />
+        <label>
+            Авторы:
+            <br />
+            {% for teacher in teachers %}
+                <input type="checkbox" name="teachers" value="{{ teacher.id }}" /> {{ teacher.first_name }} {{ teacher.last_name }}<br />
+            {% endfor %}
+        </label>
+        <br />
+
+        <label>
+            Название:
+            <input type="text" name="title" value="{{ course.title }}" required>
+        </label>
+        <br><br>
+
+        <button type="submit">Обновить</button>
+    </form>
+
+    <form method="post" action="{% url 'delete_course' course.id %}">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    {% endblock %}
+</body>

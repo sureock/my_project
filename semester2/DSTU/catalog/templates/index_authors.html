@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Список всех авторов в "Каталоге курсов" - {{ block.super }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h1>
+            Авторы:
+        </h1>
+        <section>
+            <ul>
+                {% for teacher in teachers %}
+                <li>
+                    <p> <a href="/authors/{{ teacher.id }}/">{{ teacher.first_name }} {{ teacher.last_name }} </p></a>
+                    <p> Биография: {{ teacher.info.bio }} </p>
+                    <p> Номер: {{ teacher.info.phone }} </p>
+                    <a href="/authors/update/{{ teacher.id }}/">Обновить автора</a>
+                    <a href="/authors/delete/{{ teacher.id }}/">Удалить автора</a>
+                    <a href="/courses/create/{{ teacher.id }}/">Создать курс</a>
+                </li>
+                {% empty %}
+                <li>Преподаватели не найдены</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {% endblock %}
+    </body>
+</html>

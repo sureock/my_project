@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Список всех курсов в "Каталоге курсов" - {{ block.super }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h1>
+            Курсы:
+        </h1>
+        <ul>
+            {% for course in courses %}
+            <li>
+                <p>Автор: {{ course.teacher.first_name }} {{ course.teacher.last_name }}</p>
+                <p>Название: {{ course.title }}</p>
+                <p>Дата создания: {{ course.date }}</p>
+                <a href="/courses/update/{{ course.id }}">Обновить</a>
+            </li>
+            {% empty %}
+            <li>Курсы не найдены</li>
+            {% endfor %}
+        </ul>
+
+        {% endblock %}
+    </body>
+</html>

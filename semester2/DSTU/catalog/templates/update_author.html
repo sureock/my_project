@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Обновление/удаление автора - {{ block.super }}
+        {% endblock %}
+    </head>
+<body>
+    {% block content %}
+    <h1>Обновить информацию о авторе</h1>
+    <form method="post">
+        {% csrf_token %}
+            <table>
+                {{ teacher_form.as_table }}
+                {{ teacherinfo_form.as_table }}
+            </table>
+        <!-- <label>
+            Имя:
+            <input type="text" name="first_name" value="{{ teacher.first_name }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            Фамилия:
+            <input type="text" name="last_name" value="{{ teacher.last_name }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            Номер:
+            <input type="text" name="number" value="{{ teacherinfo.phone }}" required>
+        </label>
+        <br><br>
+
+        <label>
+            Биография:
+            <input type="text" name="last_name" value="{{ teacherinfo.bio }}" required>
+        </label>
+        <br><br> -->
+
+        <button type="submit">Обновить</button>
+    </form>
+    {% endblock %}
+</body>

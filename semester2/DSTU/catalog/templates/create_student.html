@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% block title %}
+    Добавление студента - {{ block.super }}
+{% endblock %}
+<h1>Добавить студента</h1>
+<form method="post">
+    {% block content %}
+    {% csrf_token %}
+
+    <label>
+        Имя:
+        <input type="text" name="first_name" required>
+    </label>
+    <br><br>
+
+    <label>
+        Фамилия:
+        <input type="text" name="last_name" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Сохранить</button>
+    {% endblock %}
+</form>

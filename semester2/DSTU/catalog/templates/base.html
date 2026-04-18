@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <title>{% block title %}Проект{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            <h2>Проект "Каталог курсов"</h2>
+            {% block nav %}
+            <!-- <p><a href="/info/Alex">Информация</a></p> -->
+            <p><a href="/courses">Курсы</a> <a href="/courses/create">Создать курс</a></p>
+            <p><a href="/authors">Авторы</a> <a href="/authors/create">Создать автора</a></p>
+            <p><a href="/students">Студенты</a> <a href="/orm">ОРМ</a> <a href="/">Главная</a></p>
+            {% endblock %}
+        </header>
+        <main>           
+            {% block content %}
+                <p>Проект</p>
+            {% endblock %}
+        </main>
+        <br />
+        <footer>
+            {% block footer %}
+            <p>2026 Alexandr Shalaev</p>
+            {% endblock %}
+        </footer>
+     </body>
+</html>

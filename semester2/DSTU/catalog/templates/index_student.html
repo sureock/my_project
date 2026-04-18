@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Список всех студентов в "Каталоге курсов" - {{ block.super }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h1>
+            Студенты:
+        </h1>
+        <ul>
+            {% for student in students %}
+            <li>
+                {{ student.first_name }} {{ student.last_name }} | Курсы: 
+                {% for course in student.courses.all %}
+                    {{ course.title }}
+                {% endfor %}
+                <a href="/students/update/{{ student.id }}/">Обновить</a>
+                <a href="/students/sign/{{ student.id }}/">Подписаться на курс</a>
+            </li>
+            {% empty %}
+            <li>Студенты не найдены</li>
+            {% endfor %}
+        </ul>
+
+        {% endblock %}
+    </body>
+</html>

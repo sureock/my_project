@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Информация о авторе - {{ block.super }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        <h1>
+            Информация об учителе/авторе {{ teacher.first_name }}
+        </h1>
+        <p>
+            Полное имя: {{ teacher.first_name }} {{ teacher.last_name }}
+        </p>
+        <p>
+            Телефон: {{ teacher_info.phone }}
+        </p>
+        <p>
+            Биография: {{ teacher_info.bio }}
+        </p>
+        <h2>
+            Выпущенные курсы:
+        </h2>
+        <ul>
+            {% for course in courses %}
+            <li>
+                {{ course.title }}
+                <a href="/courses/update/{{ course.id }}">Обновить</a>
+            </li>
+            {% empty %}
+            <li>Курсы не найдены</li>
+            {% endfor %}
+        </ul>
+
+        {% endblock %}
+    </body>
+</html>

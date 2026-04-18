@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+            Подпись/отписка от курса - {{ block.super }}
+        {% endblock %}
+    </head>
+<body>
+    {% block content %}
+    <h1>Подписаться на курс</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <label>
+            Курсы:
+            <br />
+            {% for course in courses %}
+                <input type="checkbox" name="courses" value="{{ course.id }}" /> {{ course.title }}<br />
+            {% endfor %}
+        </label>
+        <br><br>
+
+        <button type="submit">Подписаться</button>
+    </form>
+    <br />
+
+    <form method="post" action="{% url 'unsign_student' student.id %}">
+        {% csrf_token %}
+        <label>
+            Подписанные курсы:
+            <br />
+            {% for course in student.courses.all %}
+                <input type="checkbox" name="courses" value="{{ course.id }}" /> {{ course.title }}<br />
+            {% endfor %}
+        </label>
+        <br><br>
+
+        <button type="submit">Отписаться</button>
+    </form>
+    {% endblock %}
+</body>

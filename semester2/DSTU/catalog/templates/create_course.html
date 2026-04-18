@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% block title %}
+    Добавление курса - {{ block.super }}
+{% endblock %}
+<body>
+    {% block content %}
+        <h1>Добавить курс</h1>
+        <form method="post">
+            {% csrf_token %}
+
+            <label>
+                Авторы:
+                <br />
+                {% for teacher in teachers %}
+                    <input type="checkbox" name="teachers" value="{{ teacher.id }}" /> {{ teacher.first_name }} {{ teacher.last_name }}<br />
+                {% endfor %}
+            </label>
+            <br />
+
+            <table>
+                {{ form.as_table }}
+            </table>
+
+            <button type="submit">Сохранить</button>
+        </form>
+    {% endblock %}
+</body>

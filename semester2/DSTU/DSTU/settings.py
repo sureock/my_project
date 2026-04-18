@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "catalog",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = "DSTU.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'catalog/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -80,6 +81,7 @@ DATABASES = {
         "NAME": "django_test",
         "USER": "postgres",
         "PASSWORD": "12345",
+        "PORT": '5432',
     }
 }
 
@@ -102,6 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.MyUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
