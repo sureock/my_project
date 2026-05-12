@@ -1,0 +1,58 @@
+{# templates/users/users_list.html #}
+{% extends "base.html" %}
+
+{% block title %}{{ title|default:"Мои друзья" }} — Django-Hotel{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>{{ title|default:"Мои друзья" }}</h1>
+  
+  {% if friends %}
+    <div class="users-grid">
+      {% for friend in friends %}
+        <div class="user-card">
+          
+          <div class="user-info">
+            <h3>{{ friend.teacher.username }}</h3>
+            <p class="user-name">
+              {% if friend.first_name or friend.last_name %}
+                {{ friend.first_name }} {{ friend.last_name }}
+              {% else %}
+                <span class="text-muted">Имя не указано</span>
+              {% endif %}
+            </p>
+            {% if friend.phone %}
+              <p class="user-phone">{{ friend.phone }}</p>
+            {% endif %}
+          </div>
+          
+          <div class="user-actions">
+            <a href="{% url 'users:profile' friend.teacher.username %}" class="btn-view">
+              Просмотр
+            </a>
+            <a href="{% url 'users:remove_friend' friend.teacher.username %}" 
+               class="btn-remove"
+               onclick="return confirm('Удалить {{ friend.teacher.username }} из друзей?')">
+              Удалить
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>У вас пока нет друзей</p>
+    </div>
+  {% endif %}
+  
+  <div class="nav-links">
+    <a href="{% url 'users:profile' user.username %}" class="btn-back">
+      Вернуться в профиль
+    </a>
+    <a href="{% url 'users:all_users_list' %}" class="btn-back">
+      Найти друзей
+    </a>
+  </div>
+</div>
+
+{% endblock %}

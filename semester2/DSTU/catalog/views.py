@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from .models import Teacher, Course, Student, TeacherInfo
-from .forms import TeacherForm, TeacherInfoForm, CourseForm
+from .models import Course, Student
+from users.models import Teacher, TeacherInfo
+from .forms import CourseForm
+
+
+def custom_404(request, exception):
+    return render(request, "not_found.html")
 
 
 def index(request):
@@ -33,69 +38,67 @@ def info_authors(request, teacher_id):
                                                 'teacher_info': teacher_info})
 
 
-def create_author(request):
-    teacher_form = TeacherForm(request.GET or None)
-    teacherinfo_form = TeacherInfoForm(request.GET or None)
+# def create_author(request):
+#     teacher_form = TeacherForm(request.GET or None)
+#     teacherinfo_form = TeacherInfoForm(request.GET or None)
 
-    if teacher_form.is_valid() and teacherinfo_form.is_valid():
-        teacher_data = teacher_form.data
+#     if teacher_form.is_valid() and teacherinfo_form.is_valid():
+#         teacher_data = teacher_form.data
 
-        teacher = Teacher.objects.create(
-            first_name=teacher_data['first_name'],
-            last_name=teacher_data['last_name'],
-            patronymic=teacher_data['patronymic'],
-        )
-        TeacherInfo.objects.create(
-            teacher=teacher,
-            phone=teacher_data['phone'],
-            bio=teacher_data['bio'],
-            email=teacher_data['email'],
-            birthday=teacher_data['birthday']
-        )
-        return redirect('/authors/')
-    return render(
-            request,
-            'create_author.html',
-            {'teacher_form': teacher_form,
-             'teacherinfo_form': teacherinfo_form})
-
-
-def update_authors(request, teacher_id):
-    teacher = Teacher.objects.get(id=teacher_id)
-    teacherinfo = TeacherInfo.objects.get(teacher=teacher)
-    if request.method == 'GET':
-        teacher_form = TeacherForm(instance=teacher)
-        teacherinfo_form = TeacherInfoForm(instance=teacherinfo)
-
-        context = {'teacher_form': teacher_form,
-                   'teacherinfo_form': teacherinfo_form}
-
-        return render(request, 'update_author.html', context)
-
-    if request.method == 'POST':
-        teacher_form = TeacherForm(request.POST)
-        teacherinfo_form = TeacherInfoForm(request.POST)
-
-        teacher_data = teacher_form.data
-
-        teacher.first_name = teacher_data['first_name']
-        teacher.last_name = teacher_data['last_name']
-        teacher.patronymic = teacher_data['patronymic']
-
-        teacherinfo.phone = teacher_data['phone']
-        teacherinfo.bio = teacher_data['bio']
-        teacherinfo.email = teacher_data['email']
-        teacherinfo.birthday = teacher_data['birthday']
-
-        teacher.save()
-        teacherinfo.save()
-        return redirect('/authors/')
+#         teacher = Teacher.objects.create(
+#             first_name=teacher_data['first_name'],
+#             last_name=teacher_data['last_name'],
+#             patronymic=teacher_data['patronymic'],
+#         )
+#         TeacherInfo.objects.create(
+#             teacher=teacher,
+#             phone=teacher_data['phone'],
+#             email=teacher_data['email'],
+#             birthday=teacher_data['birthday']
+#         )
+#         return redirect('/authors/')
+#     return render(
+#             request,
+#             'create_author.html',
+#             {'teacher_form': teacher_form,
+#              'teacherinfo_form': teacherinfo_form})
 
 
-def delete_authors(request, teacher_id):
-    teacher = Teacher.objects.get(id=teacher_id)
-    teacher.delete()
-    return redirect('/authors/')
+# def update_authors(request, teacher_id):
+#     teacher = Teacher.objects.get(id=teacher_id)
+#     teacherinfo = TeacherInfo.objects.get(teacher=teacher)
+#     if request.method == 'GET':
+#         teacher_form = TeacherForm(instance=teacher)
+#         teacherinfo_form = TeacherInfoForm(instance=teacherinfo)
+
+#         context = {'teacher_form': teacher_form,
+#                    'teacherinfo_form': teacherinfo_form}
+
+#         return render(request, 'update_author.html', context)
+
+#     if request.method == 'POST':
+#         teacher_form = TeacherForm(request.POST)
+#         teacherinfo_form = TeacherInfoForm(request.POST)
+
+#         teacher_data = teacher_form.data
+
+#         teacher.first_name = teacher_data['first_name']
+#         teacher.last_name = teacher_data['last_name']
+#         teacher.patronymic = teacher_data['patronymic']
+
+#         teacherinfo.phone = teacher_data['phone']
+#         teacherinfo.email = teacher_data['email']
+#         teacherinfo.birthday = teacher_data['birthday']
+
+#         teacher.save()
+#         teacherinfo.save()
+#         return redirect('/authors/')
+
+
+# def delete_authors(request, teacher_id):
+#     teacher = Teacher.objects.get(id=teacher_id)
+#     teacher.delete()
+#     return redirect('/authors/')
 
 
 def create_course(request):

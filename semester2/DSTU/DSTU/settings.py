@@ -11,9 +11,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import logging
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'emails'
+
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+# SERVER_EMAIL = 'webmaster@localhost'
 
 
 # Quick-start development settings - unsuitable for production
@@ -49,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'users.middleware.RequestLoggingMiddleware',
 ]
 
 ROOT_URLCONF = "DSTU.urls"
@@ -76,12 +85,8 @@ WSGI_APPLICATION = "DSTU.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": "localhost",
-        "NAME": "django_test",
-        "USER": "postgres",
-        "PASSWORD": "12345",
-        "PORT": '5432',
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3"
     }
 }
 
@@ -104,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'users.MyUser'
+AUTH_USER_MODEL = 'users.Teacher'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -126,4 +131,96 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+
+# Настройка логгеров
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{asctime} - {levelname} - {name} - {module} - {funcName} - {lineno} - {message}',
+            'style': '{',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'simple': {
+            'format': '{asctime} - {levelname} - {message}',
+            'style': '{',
+            'datefmt': '%H:%M:%S'
+        },
+        'detailed': {
+            'format': '{asctime} - {levelname} - {name} - {filename}:{lineno} - {funcName}() - {message}',
+            'style': '{',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        }
+    },
+    'handlers': {
+        # 1. Консольный хэндлер
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'simple',
+            'stream': 'ext://sys.stdout',
+        },
+        # 2. Файл с ротацией по размеру
+        'rotating_file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'INFO',
+            'formatter': 'verbose',
+            'filename': os.path.join(LOG_DIR, 'app_rotating.log'),
+            'maxBytes': 10 * 1024 * 1024,  # 10 MB
+            'backupCount': 5,
+            'encoding': 'utf-8',
+        },
+        # 3. Файл с ротацией по времени (ежедневно)
+        'timed_rotating_file': {
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'level': 'INFO',
+            'formatter': 'detailed',
+            'filename': os.path.join(LOG_DIR, 'app_timed.log'),
+            'when': 'midnight',  # Ротация в полночь
+            'interval': 1,  # Каждый день
+            'backupCount': 7,  # Хранить 7 дней
+            'encoding': 'utf-8',
+        },
+        # Файл для ошибок
+        'error_file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'ERROR',
+            'formatter': 'detailed',
+            'filename': os.path.join(LOG_DIR, 'errors.log'),
+            'maxBytes': 5 * 1024 * 1024,  # 5 MB
+            'backupCount': 3,
+            'encoding': 'utf-8',
+        },
+    },
+    'loggers': {
+        # Логгер для приложения users
+        'users': {
+            'handlers': ['console', 'rotating_file', 'timed_rotating_file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        # Корневой логгер
+        '': {
+            'handlers': ['console', 'rotating_file', 'error_file'],
+            'level': 'INFO',
+        },
+        # Логгер для ошибок валидации
+        'django': {
+            'handlers': ['console', 'rotating_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

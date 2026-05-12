@@ -1,46 +1,6 @@
 from django.db import models
 from .validators import real_age, real_number, real_email
-
-
-class Teacher(models.Model):
-    first_name = models.CharField(
-        max_length=100,
-        blank=False,
-    )
-    last_name = models.CharField(
-        max_length=100,
-        blank=False
-    )
-    patronymic = models.CharField(
-        max_length=100,
-        blank=True
-    )
-
-
-class TeacherInfo(models.Model):
-    teacher = models.OneToOneField(
-        Teacher,
-        on_delete=models.CASCADE,
-        related_name='info',
-        primary_key=True
-    )
-    phone = models.CharField(
-        max_length=30,
-        blank=False,
-        unique=True,
-        validators=[real_number]
-    )
-    bio = models.TextField(
-        blank=True
-    )
-    email = models.TextField(
-        blank=True,
-        unique=True,
-        validators=[real_email]
-    )
-    birthday = models.DateField( 
-        validators=[real_age],
-    )
+from users.models import Teacher
 
 
 class Course(models.Model):

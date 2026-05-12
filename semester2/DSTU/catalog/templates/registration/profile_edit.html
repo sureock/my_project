@@ -1,0 +1,105 @@
+{# templates/users/profile_edit.html #}
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля — Django-Hotel{% endblock %}
+
+{% block content %}
+<div class="page-form">
+  <h1>Редактирование профиля</h1>
+  
+  <div class="form-wrap">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <h3>Информация об аккаунте</h3>
+      
+      {# Ручной вывод формы для лучшего контроля #}
+      <div class="field">
+        <label for="{{ u_form.username.id_for_label }}">Имя пользователя:</label>
+        {{ u_form.username }}
+        {% if u_form.username.errors %}
+          <div class="error">{{ u_form.username.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="field">
+        <label for="{{ u_form.email.id_for_label }}">Email:</label>
+        {{ u_form.email }}
+        {% if u_form.email.errors %}
+          <div class="error">{{ u_form.email.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="field">
+        <label for="{{ u_form.first_name.id_for_label }}">Имя:</label>
+        {{ u_form.first_name }}
+        {% if u_form.first_name.errors %}
+          <div class="error">{{ u_form.first_name.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="field">
+        <label for="{{ u_form.last_name.id_for_label }}">Фамилия:</label>
+        {{ u_form.last_name }}
+        {% if u_form.last_name.errors %}
+          <div class="error">{{ u_form.last_name.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <h3 style="margin: 20px 0 10px;">Дополнительная информация</h3>
+      
+      <div class="field">
+        <label for="{{ p_form.phone.id_for_label }}">Телефон:</label>
+        {{ p_form.phone }}
+        {% if p_form.phone.errors %}
+          <div class="error">{{ p_form.phone.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <div class="field">
+        <label for="{{ p_form.birthday.id_for_label }}">Дата рождения:</label>
+        {{ p_form.birthday }}
+        {% if p_form.birthday.errors %}
+          <div class="error">{{ p_form.birthday.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="field">
+        <label for="{{ p_form.avatar.id_for_label }}">Аватар:</label>
+        {{ p_form.avatar }}
+        <small style="color: #666; display: block; margin-top: 5px;">
+          Поддерживаемые форматы: JPG, JPEG, PNG, GIF, BMP, WEBP. Максимальный размер: 5MB
+        </small>
+        
+        {% if request.user.info.avatar %}
+          <div style="margin-top: 10px;">
+            <p>Текущий аватар:</p>
+            <img src="{{ request.user.info.avatar.url }}" alt="Текущий аватар" style="max-width: 150px; max-height: 150px;">
+            <br>
+            <label>
+              <input type="checkbox" name="avatar-clear" id="avatar-clear">
+              Удалить аватар
+            </label>
+          </div>
+        {% endif %}
+        
+        <div style="margin-top: 10px;">
+          <p>Новый аватар (предпросмотр):</p>
+          <img id="avatar-preview" style="max-width: 150px; max-height: 150px; display: none;">
+        </div>
+        
+        {% if p_form.avatar.errors %}
+          <div class="error">{{ p_form.avatar.errors }}</div>
+        {% endif %}
+      </div>
+      
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button type="submit" class="btn-submit">Сохранить изменения</button>
+        <a href="{% url 'users:profile' user.username %}" class="btn-submit">
+          Отмена
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

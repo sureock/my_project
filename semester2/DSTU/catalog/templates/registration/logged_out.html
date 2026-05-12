@@ -1,14 +1,15 @@
-{% extends "templates/base.html" %}
-{% load i18n %}
+{% extends "base.html" %}
 
-{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% translate 'Home' %}</a></div>{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Выход</title>
+</head>
+<body>
 
-{% block nav-sidebar %}{% endblock %}
+<h2>Вы вышли из системы</h2>
 
-{% block content %}
+<a href="{% url 'login' %}">Войти снова</a>
 
-<p>{% translate "Thanks for spending some quality time with the web site today." %}</p>
-
-<p><a href="{% url 'admin:index' %}">{% translate 'Log in again' %}</a></p>
-
-{% endblock %}
+</body>
+</html>

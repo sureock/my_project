@@ -1,0 +1,31 @@
+2026-05-12 16:22:55 - INFO - users.views - views.py:43 - user_login() - User User10 logged in successfully
+2026-05-12 16:36:06 - INFO - users.views - views.py:21 - register() - User User20 registered successfully
+2026-05-12 16:38:30 - INFO - users.models - models.py:90 - save() - Avatar resized for user User20
+2026-05-12 16:43:47 - INFO - users.models - models.py:90 - save() - Avatar resized for user User20
+2026-05-12 16:46:43 - INFO - users.models - models.py:90 - save() - Avatar resized for user User20
+2026-05-12 16:50:58 - INFO - users.models - models.py:90 - save() - Avatar resized for user User20
+2026-05-12 16:55:10 - INFO - users.models - models.py:90 - save() - Avatar resized for user User20
+2026-05-12 17:02:40 - WARNING - users.views - views.py:49 - user_login() - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:02:49 - INFO - users.views - views.py:43 - user_login() - User User10 logged in successfully
+2026-05-12 17:03:22 - INFO - users.models - models.py:90 - save() - Avatar resized for user User10
+2026-05-12 17:04:02 - INFO - users.views - views.py:255 - remove_friend() - User User10 removed User1 from friends
+2026-05-12 17:07:04 - WARNING - users.views - views.py:24 - register() - Registration validation failed: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>This field is required.</li></ul></li><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'username': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:24 - register() - Registration validation failed: <ul class="errorlist"><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:24 - register() - Registration validation failed: <ul class="errorlist"><li>email<ul class="errorlist" id="id_email_error"><li>Enter a valid email address.</li></ul></li><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'email': Enter a valid email address.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:24 - register() - Registration validation failed: <ul class="errorlist"><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li><li>password2<ul class="errorlist" id="id_password2_error"><li>The two password fields didn’t match.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views.py:27 - register() - Registration error - Field 'password2': The two password fields didn’t match.
+2026-05-12 17:07:08 - INFO - users.views - views.py:43 - user_login() - User testuser logged in successfully
+2026-05-12 17:07:10 - INFO - users.views - views.py:60 - user_logout() - User testuser logged out
+2026-05-12 17:07:13 - INFO - users.views - views.py:43 - user_login() - User testuser logged in successfully
+2026-05-12 17:07:16 - WARNING - users.views - views.py:49 - user_login() - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:07:18 - WARNING - users.views - views.py:49 - user_login() - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:07:19 - WARNING - users.views - views.py:49 - user_login() - Login form validation failed: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:25 - INFO - users.views - views.py:21 - register() - User newuser123 registered successfully
+2026-05-12 17:07:29 - INFO - users.views - views.py:43 - user_login() - User testuser logged in successfully
+2026-05-12 17:07:31 - INFO - users.views - views.py:60 - user_logout() - User testuser logged out

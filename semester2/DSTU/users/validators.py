@@ -1,6 +1,10 @@
 from django.core.exceptions import ValidationError
 from datetime import date
 import re
+import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def real_age(value: date) -> None:
@@ -27,3 +31,13 @@ def real_email(value) -> None:
         raise ValidationError(
             'Почта не подходит'
         )
+    
+
+def validate_image_file(value):
+    """Валидатор для проверки, что файл является изображением"""
+    ext = os.path.splitext(value.name)[1].lower()
+    valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
+    
+    if ext not in valid_extensions:
+        logger.warning(f"Invalid file type uploaded: {ext}")
+        raise ValidationError(f'Неверный формат файла. Поддерживаются: {", ".join(valid_extensions)}')

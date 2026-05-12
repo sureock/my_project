@@ -1,0 +1,67 @@
+{# templates/users/all_users.html #}
+{% extends "base.html" %}
+
+{% block title %}Все пользователи — Django-Hotel{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Все пользователи</h1>
+  <p>
+    Здесь вы можете просмотреть всех зарегистрированных пользователей и добавить их в друзья.
+  </p>
+  
+  <div class="users-grid">
+    {% for user_data in users_data %}
+      <div class="user-card">
+        
+        <div class="user-info">
+          <h3>{{ user_data.user.username }}</h3>
+          <p class="user-name">
+            {% if user_data.user.first_name or user_data.user.last_name %}
+              {{ user_data.user.first_name }} {{ user_data.user.last_name }}
+            {% else %}
+              <span class="text-muted">Имя не указано</span>
+            {% endif %}
+          </p>
+          
+          {% if user_data.info.phone %}
+            <p class="user-phone">{{ user_data.info.phone }}</p>
+          {% endif %}
+        </div>
+        
+        <div class="user-actions">
+          {% if user_data.is_friend %}
+            <span class="friend-badge">✓ В друзьях</span>
+            <a href="{% url 'users:profile' user_data.user.username %}" class="btn-view">
+              Просмотр
+            </a>
+            <a href="{% url 'users:remove_friend' user_data.user.username %}" 
+               class="btn-remove"
+               onclick="return confirm('Удалить {{ user_data.user.username }} из друзей?')">
+              Удалить
+            </a>
+          {% else %}
+            <a href="{% url 'users:add_friend' user_data.user.username %}" class="btn-add">
+              Добавить в друзья
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% empty %}
+      <div class="empty-state">
+        <p>Нет других пользователей</p>
+        <p>Пригласите друзей зарегистрироваться!</p>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <div class="nav-links">
+    <a href="{% url 'users:profile' user.username %}" class="btn-back">
+      Вернуться в профиль
+    </a>
+    <a href="{% url 'users:users_list' %}" class="btn-back">
+      Мои друзья
+    </a>
+  </div>
+</div>
+{% endblock %}

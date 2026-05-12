@@ -1,0 +1,291 @@
+2026-05-12 16:22:26 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:22:29 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1063
+2026-05-12 16:22:31 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/ HTTP/1.1" 302 0
+2026-05-12 16:22:31 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 16:22:31 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/admin/logs/ HTTP/1.1" 404 6351
+2026-05-12 16:22:43 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/login/ HTTP/1.1" 200 831
+2026-05-12 16:22:55 - INFO - users.views - views - user_login - 43 - User User10 logged in successfully
+2026-05-12 16:22:55 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/login/ HTTP/1.1" 200 1545
+2026-05-12 16:23:33 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:23:55 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:24:16 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/ HTTP/1.1" 200 196
+2026-05-12 16:24:21 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=app_rotating.log HTTP/1.1" 200 1300
+2026-05-12 16:24:28 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=app_timed.log HTTP/1.1" 200 118
+2026-05-12 16:24:32 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=errors.log HTTP/1.1" 200 11
+2026-05-12 16:24:37 - ERROR - django.request - log - log_response - 253 - Internal Server Error: /auth/profile/User10/
+Traceback (most recent call last):
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 516, in __get__
+    rel_obj = self.related.get_cached_value(instance)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\fields\mixins.py", line 37, in get_cached_value
+    return instance._state.fields_cache[self.cache_name]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'info'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users_teacherinfo.avatar
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\views.py", line 74, in profile
+    viewed_info = viewed_user.info
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 523, in __get__
+    rel_obj = self.get_queryset(instance=instance).get(**filter_args)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\query.py", line 631, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\query.py", line 368, in __len__
+    self._fetch_all()
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\query.py", line 1954, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\query.py", line 93, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alexander\anaconda3\Lib\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: users_teacherinfo.avatar
+2026-05-12 16:24:37 - ERROR - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 500 158517
+2026-05-12 16:25:05 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:25:26 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:25:28 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 200 4121
+2026-05-12 16:25:37 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 3785
+2026-05-12 16:25:47 - INFO - django.server - basehttp - log_message - 213 - "POST /accounts/logout/ HTTP/1.1" 200 957
+2026-05-12 16:25:48 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/register/ HTTP/1.1" 200 2611
+2026-05-12 16:26:09 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:26:09 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 16:26:09 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/profile/edit/ HTTP/1.1" 404 6353
+2026-05-12 16:26:11 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 302 0
+2026-05-12 16:26:11 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 16:26:11 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/profile/User10/ HTTP/1.1" 404 6355
+2026-05-12 16:30:34 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\forms.py changed, reloading.
+2026-05-12 16:30:35 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:30:55 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\forms.py changed, reloading.
+2026-05-12 16:30:56 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:31:14 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\forms.py changed, reloading.
+2026-05-12 16:31:15 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:31:45 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\forms.py changed, reloading.
+2026-05-12 16:31:45 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:32:01 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\users\forms.py changed, reloading.
+2026-05-12 16:32:02 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:33:56 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:33:58 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 983
+2026-05-12 16:34:00 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/register/ HTTP/1.1" 200 3309
+2026-05-12 16:34:32 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:34:55 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 983
+2026-05-12 16:35:15 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/register/ HTTP/1.1" 200 2813
+2026-05-12 16:36:06 - INFO - users.views - views - register - 21 - User User20 registered successfully
+2026-05-12 16:36:06 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/register/ HTTP/1.1" 200 1625
+2026-05-12 16:36:08 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 3922
+2026-05-12 16:37:46 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:38:07 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:38:10 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4483
+2026-05-12 16:38:16 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 4446
+2026-05-12 16:38:30 - INFO - users.models - models - save - 90 - Avatar resized for user User20
+2026-05-12 16:38:30 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:38:30 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4311
+2026-05-12 16:38:30 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:38:30 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6394
+2026-05-12 16:39:03 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\settings.py changed, reloading.
+2026-05-12 16:39:03 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:39:28 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\urls.py changed, reloading.
+2026-05-12 16:39:29 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:39:42 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\urls.py changed, reloading.
+2026-05-12 16:39:43 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:40:04 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:40:08 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4317
+2026-05-12 16:40:08 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:40:08 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:40:11 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 5114
+2026-05-12 16:40:11 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:40:11 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:40:22 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 200 5353
+2026-05-12 16:40:22 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:40:22 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:40:28 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4317
+2026-05-12 16:40:28 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:40:28 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:41:21 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4317
+2026-05-12 16:41:21 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:41:21 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:41:33 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:41:54 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:41:57 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4317
+2026-05-12 16:41:57 - WARNING - django.request - log - log_response - 253 - Not Found: /media/avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:41:57 - WARNING - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6561
+2026-05-12 16:42:38 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\settings.py changed, reloading.
+2026-05-12 16:42:39 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:42:49 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\settings.py changed, reloading.
+2026-05-12 16:42:50 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:43:11 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:43:13 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4311
+2026-05-12 16:43:13 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:43:13 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6543
+2026-05-12 16:43:31 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 5102
+2026-05-12 16:43:31 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07.jpg
+2026-05-12 16:43:31 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07.jpg HTTP/1.1" 404 6543
+2026-05-12 16:43:47 - INFO - users.models - models - save - 90 - Avatar resized for user User20
+2026-05-12 16:43:47 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:43:47 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4319
+2026-05-12 16:43:47 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg
+2026-05-12 16:43:47 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg HTTP/1.1" 404 6567
+2026-05-12 16:45:08 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:45:30 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:45:41 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4319
+2026-05-12 16:45:41 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg
+2026-05-12 16:45:41 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg HTTP/1.1" 404 6567
+2026-05-12 16:45:50 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 5126
+2026-05-12 16:45:50 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg
+2026-05-12 16:45:50 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/photo_2023-08-06_11-28-07_UnnX444.jpg HTTP/1.1" 404 6567
+2026-05-12 16:46:43 - INFO - users.models - models - save - 90 - Avatar resized for user User20
+2026-05-12 16:46:43 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:46:43 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4291
+2026-05-12 16:46:43 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/myman.jpg
+2026-05-12 16:46:43 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/myman.jpg HTTP/1.1" 404 6483
+2026-05-12 16:49:57 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:50:19 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:50:23 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4754
+2026-05-12 16:50:23 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/myman.jpg
+2026-05-12 16:50:23 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/myman.jpg HTTP/1.1" 404 6483
+2026-05-12 16:50:30 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 5042
+2026-05-12 16:50:30 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/myman.jpg
+2026-05-12 16:50:30 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/myman.jpg HTTP/1.1" 404 6483
+2026-05-12 16:50:35 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/myman.jpg
+2026-05-12 16:50:35 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/myman.jpg HTTP/1.1" 404 6483
+2026-05-12 16:50:58 - INFO - users.models - models - save - 90 - Avatar resized for user User20
+2026-05-12 16:50:58 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:50:58 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4760
+2026-05-12 16:50:58 - WARNING - django.request - log - log_response - 253 - Not Found: /avatars/calculation.png
+2026-05-12 16:50:58 - WARNING - django.server - basehttp - log_message - 213 - "GET /avatars/calculation.png HTTP/1.1" 404 6501
+2026-05-12 16:53:08 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\urls.py changed, reloading.
+2026-05-12 16:53:09 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:53:21 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\urls.py changed, reloading.
+2026-05-12 16:53:22 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:53:38 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:54:29 - INFO - django.utils.autoreload - autoreload - trigger_reload - 265 - C:\Users\Alexander\Desktop\ДГТУ\Прошлое\Лабы_3_курс\ЯПЛАБЫ\semester2\DSTU\DSTU\settings.py changed, reloading.
+2026-05-12 16:54:30 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 16:54:52 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 16:54:54 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4766
+2026-05-12 16:54:54 - INFO - django.server - basehttp - log_message - 213 - "GET /media/avatars/calculation.png HTTP/1.1" 200 40673
+2026-05-12 16:54:57 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 5072
+2026-05-12 16:55:10 - INFO - users.models - models - save - 90 - Avatar resized for user User20
+2026-05-12 16:55:10 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 16:55:10 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User20/ HTTP/1.1" 200 4780
+2026-05-12 16:55:10 - INFO - django.server - basehttp - log_message - 213 - "GET /media/avatars/photo_2026-01-17_12-39-03.jpg HTTP/1.1" 200 8590
+2026-05-12 16:58:39 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/ HTTP/1.1" 200 196
+2026-05-12 16:58:42 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=app_rotating.log HTTP/1.1" 200 23584
+2026-05-12 16:58:50 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=app_timed.log HTTP/1.1" 200 719
+2026-05-12 16:59:40 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 17:00:23 - INFO - django.server - basehttp - log_message - 213 - "POST /accounts/logout/ HTTP/1.1" 200 957
+2026-05-12 17:00:25 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/register/ HTTP/1.1" 200 2813
+2026-05-12 17:02:00 - INFO - django.utils.autoreload - autoreload - run_with_reloader - 667 - Watching for file changes with StatReloader
+2026-05-12 17:02:22 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 983
+2026-05-12 17:02:22 - WARNING - django.request - log - log_response - 253 - Not Found: /favicon.ico
+2026-05-12 17:02:22 - WARNING - django.server - basehttp - log_message - 213 - "GET /favicon.ico HTTP/1.1" 404 6804
+2026-05-12 17:02:24 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 983
+2026-05-12 17:02:25 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/register/ HTTP/1.1" 200 2813
+2026-05-12 17:02:35 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/login/ HTTP/1.1" 200 866
+2026-05-12 17:02:40 - WARNING - users.views - views - user_login - 49 - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:02:40 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/login/ HTTP/1.1" 200 1024
+2026-05-12 17:02:49 - INFO - users.views - views - user_login - 43 - User User10 logged in successfully
+2026-05-12 17:02:49 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/login/ HTTP/1.1" 200 1625
+2026-05-12 17:03:02 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 200 4604
+2026-05-12 17:03:08 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/edit/ HTTP/1.1" 200 4455
+2026-05-12 17:03:22 - INFO - users.models - models - save - 90 - Avatar resized for user User10
+2026-05-12 17:03:22 - INFO - django.server - basehttp - log_message - 213 - "POST /auth/profile/edit/ HTTP/1.1" 302 0
+2026-05-12 17:03:22 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 200 4967
+2026-05-12 17:03:22 - INFO - django.server - basehttp - log_message - 213 - "GET /media/avatars/myman_3tXz6LJ.jpg HTTP/1.1" 200 22445
+2026-05-12 17:03:29 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/ HTTP/1.1" 200 3340
+2026-05-12 17:03:36 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/all/ HTTP/1.1" 200 6082
+2026-05-12 17:03:41 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User1/ HTTP/1.1" 200 3847
+2026-05-12 17:03:53 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User10/ HTTP/1.1" 200 4967
+2026-05-12 17:03:53 - INFO - django.server - basehttp - log_message - 213 - "GET /media/avatars/myman_3tXz6LJ.jpg HTTP/1.1" 304 0
+2026-05-12 17:04:02 - INFO - users.views - views - remove_friend - 255 - User User10 removed User1 from friends
+2026-05-12 17:04:02 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/friend/remove/User1/ HTTP/1.1" 302 0
+2026-05-12 17:04:02 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User1/ HTTP/1.1" 302 0
+2026-05-12 17:04:02 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/ HTTP/1.1" 200 2623
+2026-05-12 17:04:08 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User1/ HTTP/1.1" 302 0
+2026-05-12 17:04:08 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/ HTTP/1.1" 200 2623
+2026-05-12 17:04:17 - INFO - django.server - basehttp - log_message - 213 - "GET /accounts/password-change/ HTTP/1.1" 200 1520
+2026-05-12 17:04:20 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 1625
+2026-05-12 17:04:22 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/ HTTP/1.1" 200 196
+2026-05-12 17:04:25 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/admin/logs/?file=app_rotating.log HTTP/1.1" 200 27953
+2026-05-12 17:04:36 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/ HTTP/1.1" 200 2623
+2026-05-12 17:04:41 - INFO - django.server - basehttp - log_message - 213 - "POST /accounts/logout/ HTTP/1.1" 200 957
+2026-05-12 17:04:47 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User1/ HTTP/1.1" 302 0
+2026-05-12 17:04:47 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 17:04:47 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/profile/User1/ HTTP/1.1" 404 6842
+2026-05-12 17:05:11 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/users/ HTTP/1.1" 302 0
+2026-05-12 17:05:11 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 17:05:11 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/users/ HTTP/1.1" 404 6834
+2026-05-12 17:05:12 - INFO - django.server - basehttp - log_message - 213 - "GET / HTTP/1.1" 200 983
+2026-05-12 17:05:21 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/profile/User1/ HTTP/1.1" 302 0
+2026-05-12 17:05:21 - WARNING - django.request - log - log_response - 253 - Not Found: /accounts/login/
+2026-05-12 17:05:21 - WARNING - django.server - basehttp - log_message - 213 - "GET /accounts/login/?next=/auth/profile/User1/ HTTP/1.1" 404 6842
+2026-05-12 17:05:29 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/login/ HTTP/1.1" 200 866
+2026-05-12 17:05:33 - INFO - django.server - basehttp - log_message - 213 - "GET /accounts/password-reset/ HTTP/1.1" 200 606
+2026-05-12 17:05:39 - INFO - django.server - basehttp - log_message - 213 - "POST /accounts/password-reset/ HTTP/1.1" 302 0
+2026-05-12 17:05:39 - INFO - django.server - basehttp - log_message - 213 - "GET /accounts/password-reset/done/ HTTP/1.1" 200 327
+2026-05-12 17:06:15 - INFO - django.server - basehttp - log_message - 213 - "GET /auth/login/ HTTP/1.1" 200 866
+2026-05-12 17:06:17 - INFO - django.server - basehttp - log_message - 213 - "GET /accounts/password-reset/ HTTP/1.1" 200 606
+2026-05-12 17:06:22 - INFO - django.server - basehttp - log_message - 213 - "POST /accounts/password-reset/ HTTP/1.1" 302 0
+2026-05-12 17:06:22 - INFO - django.server - basehttp - log_message - 213 - "GET /accounts/password-reset/done/ HTTP/1.1" 200 327
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 24 - Registration validation failed: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>This field is required.</li></ul></li><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'username': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 24 - Registration validation failed: <ul class="errorlist"><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 24 - Registration validation failed: <ul class="errorlist"><li>email<ul class="errorlist" id="id_email_error"><li>Enter a valid email address.</li></ul></li><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'email': Enter a valid email address.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 24 - Registration validation failed: <ul class="errorlist"><li>phone<ul class="errorlist" id="id_phone_error"><li>This field is required.</li></ul></li><li>password2<ul class="errorlist" id="id_password2_error"><li>The two password fields didn’t match.</li></ul></li></ul>
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'phone': This field is required.
+2026-05-12 17:07:04 - WARNING - users.views - views - register - 27 - Registration error - Field 'password2': The two password fields didn’t match.
+2026-05-12 17:07:08 - INFO - users.views - views - user_login - 43 - User testuser logged in successfully
+2026-05-12 17:07:10 - INFO - users.views - views - user_logout - 60 - User testuser logged out
+2026-05-12 17:07:13 - INFO - users.views - views - user_login - 43 - User testuser logged in successfully
+2026-05-12 17:07:16 - WARNING - users.views - views - user_login - 49 - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:07:18 - WARNING - users.views - views - user_login - 49 - Login form validation failed: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+2026-05-12 17:07:19 - WARNING - users.views - views - user_login - 49 - Login form validation failed: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>This field is required.</li></ul></li></ul>
+2026-05-12 17:07:25 - INFO - users.views - views - register - 21 - User newuser123 registered successfully
+2026-05-12 17:07:29 - INFO - users.views - views - user_login - 43 - User testuser logged in successfully
+2026-05-12 17:07:31 - INFO - users.views - views - user_logout - 60 - User testuser logged out

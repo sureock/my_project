@@ -1,0 +1,133 @@
+{# templates/registration/profile.html #}
+{% extends "base.html" %}
+
+{% block title %}Профиль {{ profile_user.username }} — Django-Hotel{% endblock %}
+
+{% block content %}
+<div class="page-form">
+  <h1>Профиль пользователя {{ profile_user.username }}</h1>
+  
+  {% if not is_self and user.is_authenticated %}
+    <div style="margin-bottom: 20px;">
+      <a href="{% url 'users:remove_friend' profile_user.username %}" 
+          class="btn-submit">
+        Удалить из друзей
+      </a>
+    </div>
+  {% endif %}
+
+  <div class="form-wrap">
+    <div class="field" style="text-align: center;">
+      <label>Аватар:</label>
+      <div>
+        {% if profile_info.avatar and profile_info.avatar.url %}
+          <img src="{{ profile_info.avatar.url }}" 
+              alt="Аватар {{ profile_user.username }}"
+              style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #007bff;"
+              onerror="this.style.display='none'; this.parentElement.querySelector('.avatar-fallback').style.display='flex';">
+          <div class="avatar-fallback" style="display: none; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); align-items: center; justify-content: center; margin: 0 auto; border: 3px solid #007bff;">
+            <span style="color: white; font-size: 64px; font-weight: bold;">{{ profile_user.username|first|upper }}</span>
+          </div>
+        {% else %}
+          <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto; border: 3px solid #007bff;">
+            <span style="color: white; font-size: 64px; font-weight: bold;">{{ profile_user.username|first|upper }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Имя пользователя (из Teacher) -->
+    <div class="field">
+      <label>Имя пользователя:</label>
+      <input type="text" value="{{ profile_user.username|default:'Не указано' }}" readonly />
+    </div>
+    
+    <!-- Email (из Teacher) -->
+    <div class="field">
+      <label>Email:</label>
+      <input type="email" value="{{ profile_user.email|default:'Не указан' }}" readonly />
+    </div>
+    
+    <!-- Имя (сначала проверяем Teacher, затем TeacherInfo) -->
+    <div class="field">
+      <label>Имя:</label>
+      <input type="text" value="
+        {% if profile_user.first_name %}
+          {{ profile_user.first_name }}
+        {% elif profile_info.first_name %}
+          {{ profile_info.first_name }}
+        {% else %}
+          Не указано
+        {% endif %}
+      " readonly />
+    </div>
+    
+    <!-- Фамилия (сначала проверяем Teacher, затем TeacherInfo) -->
+    <div class="field">
+      <label>Фамилия:</label>
+      <input type="text" value="
+        {% if profile_user.last_name %}
+          {{ profile_user.last_name }}
+        {% elif profile_info.last_name %}
+          {{ profile_info.last_name }}
+        {% else %}
+          Не указано
+        {% endif %}
+      " readonly />
+    </div>
+    
+    <!-- Телефон (из TeacherInfo) -->
+    <div class="field">
+      <label>Телефон:</label>
+      <input type="tel" value="{{ profile_info.phone|default:'Не указан' }}" readonly />
+    </div>
+    
+    <!-- Дата рождения (из TeacherInfo) -->
+    {% if profile_info.birthday %}
+      <div class="field">
+        <label>Дата рождения:</label>
+        <input type="text" value="{{ profile_info.birthday|date:'d.m.Y' }}" readonly />
+      </div>
+    {% endif %}
+    
+    <!-- Список друзей -->
+    <div class="field">
+      <label>Друзья ({{ profile_info.get_friends|length }}):</label>
+      <div>
+        {% for friend in profile_info.get_friends %}
+          <p>
+            <a href="{% url 'users:profile' friend.teacher.username %}">
+              {{ friend.teacher.username }}
+            </a>
+          </p>
+        {% empty %}
+          <p>Нет друзей</p>
+        {% endfor %}
+      </div>
+    </div>
+    
+    {% if is_self %}
+      <div style="margin-top: 20px;">
+        <p><a href="{% url 'users:profile_edit' %}" class="btn-submit">
+          Редактировать профиль
+        </a></p>
+        <p><a href="{% url 'users:users_list' %}" class="btn-submit">
+          Мои друзья
+        </a></p>
+        <p><a href="{% url 'users:all_users_list' %}" class="btn-submit">
+          Найти друзей
+        </a></p>
+        <p>
+          <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-submit">
+              Выйти
+            </button>
+          </form>
+        </p>
+        
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
